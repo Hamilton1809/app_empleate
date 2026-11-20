@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".AgregarExperienciaActivity">
+
+    <!-- Encabezado con botón regresar -->
+    <LinearLayout
+        android:id="@+id/headerExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Botón Regresar -->
+        <ImageView
+            android:id="@+id/btnRegresarExp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Regresar"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="#1E3A8A"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="Agregar Experiencia"
+            android:textColor="#1E3A8A"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerExp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <EditText
+                android:id="@+id/etEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:hint="Nombre de la empresa *"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etCargoExp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:hint="Cargo desempeñado *"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etCiudadExp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:hint="Ciudad"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- Fechas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <EditText
+                    android:id="@+id/etFechaIngreso"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Fecha ingreso *"
+                    android:inputType="date"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="#1E293B"
+                    android:textColorHint="#64748B"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etFechaRetiro"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Fecha retiro"
+                    android:inputType="date"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="#1E293B"
+                    android:textColorHint="#64748B"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cbTrabajoActual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Actualmente trabajo aquí"
+                android:textColor="#1E293B"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/etFunciones"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:gravity="top|start"
+                android:hint="Funciones que realizabas *"
+                android:inputType="textMultiLine"
+                android:padding="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+            <EditText
+                android:id="@+id/etLogrosExp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:gravity="top|start"
+                android:hint="Logros obtenidos (Opcional)"
+                android:inputType="textMultiLine"
+                android:padding="12dp" />
+
+            <!-- Botón Guardar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardarExp"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:text="GUARDAR EXPERIENCIA"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#1E3A8A"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".CrearHojaVidaPaso3Activity">
+
+    <!-- Encabezado -->
+    <LinearLayout
+        android:id="@+id/headerPaso3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Paso 3 de 3"
+            android:textColor="#1E3A8A"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Menú"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            app:tint="#1E3A8A" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerPaso3"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Sección 5: Habilidades -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5. Habilidades y Competencias"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <EditText
+                android:id="@+id/etHabilidadesPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:hint="Habilidades personales (ej. Trabajo en equipo)"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etHerramientas"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_input"
+                android:hint="Herramientas tecnológicas (ej. Excel, Word)"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- Sección 6: Cursos e Idiomas -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6. Cursos e Idiomas"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <EditText
+                    android:id="@+id/etIdioma"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Idioma"
+                    android:inputType="text"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="#1E293B"
+                    android:textColorHint="#64748B"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etNivelIdioma"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Nivel (ej. Básico)"
+                    android:inputType="text"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="#1E293B"
+                    android:textColorHint="#64748B"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAgregarCurso"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="24dp"
+                android:text="+ AGREGAR CURSO O CERTIFICADO"
+                android:textColor="#1E3A8A"
+                android:textStyle="bold"
+                app:strokeColor="#1E3A8A"
+                app:cornerRadius="8dp" />
+
+            <!-- Sección 8: Información Adicional -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8. Información Adicional"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbDisponibilidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disponibilidad inmediata"
+                android:textColor="#1E293B" />
+
+            <CheckBox
+                android:id="@+id/cbViajar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disponibilidad para viajar"
+                android:textColor="#1E293B" />
+
+            <CheckBox
+                android:id="@+id/cbLicencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Tengo licencia de conducción"
+                android:textColor="#1E293B" />
+
+            <EditText
+                android:id="@+id/etTipoLicencia"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input"
+                android:hint="Tipo de licencia (Ej. A2, B1)"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etReferencias"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_input"
+                android:gravity="top|start"
+                android:hint="Referencias laborales (Nombres y contactos)"
+                android:inputType="textMultiLine"
+                android:padding="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- Sección 9: Para la IA -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="9. Datos extra para la IA"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <EditText
+                android:id="@+id/etLogros"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/bg_input"
+                android:gravity="top|start"
+                android:hint="Logros importantes obtenidos en tus trabajos..."
+                android:inputType="textMultiLine"
+                android:padding="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- Botón Finalizar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFinalizarHV"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="24dp"
+                android:text="FINALIZAR Y GUARDAR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#1E3A8A"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

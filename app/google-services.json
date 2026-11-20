@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "271129680969",
+    "project_id": "appempleate-3a627",
+    "storage_bucket": "appempleate-3a627.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271129680969:android:20142d671579b4ba357398",
+        "android_client_info": {
+          "package_name": "com.example.app_empleate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbpNCJ67Q0Lo2Df8WgZ_FHKfrxt_8f_fQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
