@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".AdminCrearCategoriasActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerCrearCategorias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Logo EMPLEATE"
+                android:scaleType="centerCrop"
+                android:scaleX="1.65"
+                android:scaleY="1.65"
+                android:src="@drawable/logo_empleate" />
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/btnMenuCrearCategorias"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Menú"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            app:tint="#1E3A8A"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/headerCrearCategorias"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CREAR CATEGORIAS"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Spinner 1: CONOCIMIENTO DEL PUESTO -->
+            <Spinner
+                android:id="@+id/spConocimientoPuesto"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <!-- Spinner 2: PREGUNTAS DE ENTREVISTAS -->
+            <Spinner
+                android:id="@+id/spPreguntasEntrevistas"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <!-- Spinner 3: HABILIDADES DE COMUNICACIÓN -->
+            <Spinner
+                android:id="@+id/spHabilidadesComunicacion"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <!-- Spinner 4: SIMULACROS Y PRACTICA -->
+            <Spinner
+                android:id="@+id/spSimulacrosPractica"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <!-- Spinner 5: SEGUIMIENTO POST-ENTREVISTA -->
+            <Spinner
+                android:id="@+id/spSeguimientoPostEntrevista"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="36dp"
+                android:background="@drawable/bg_input"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <!-- Botón Siguiente -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSiguienteCategorias"
+                android:layout_width="200dp"
+                android:layout_height="52dp"
+                android:text="SIGUIENTE ➔"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="#1E3A8A"
+                app:cornerRadius="8dp"
+                app:elevation="4dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
