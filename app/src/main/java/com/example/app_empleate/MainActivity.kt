@@ -24,11 +24,9 @@ class MainActivity : AppCompatActivity() {
         // 1. Buscamos el botón en tu diseño por su ID
         val btnIngresar = findViewById<Button>(R.id.btnIngresar)
 
-        // 2. Le decimos qué hacer cuando le hagan clic
+        // Al presionar INGRESAR AHORA, abre la pantalla completa de Selección de Roles (RolesActivity)
         btnIngresar.setOnClickListener {
-            // Creamos la "intención" de navegar a LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
-            // Iniciamos la nueva pantalla
+            val intent = Intent(this, RolesActivity::class.java)
             startActivity(intent)
         }
     }

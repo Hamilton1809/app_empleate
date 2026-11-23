@@ -133,34 +133,14 @@ class EntrenamientosIAActivity : AppCompatActivity() {
             Toast.makeText(this, "Preparando Modo Examen Real...", Toast.LENGTH_SHORT).show()
         }
 
-        // Tip 1: Control de Tiempo adaptado al cargo del usuario
-        cardTipTiempo?.setOnClickListener {
-            val cargo = PerfilUsuarioRepository.getCargoPostulacion(this)
-            val tipAdaptado = when {
-                cargo.lowercase().contains("desarrollador") || cargo.lowercase().contains("sistemas") ->
-                    "Para postularte a $cargo: Asigna máximo 3 minutos por lógica de algoritmos. Si te trabas en una prueba técnica, pasa a la siguiente solución parcial."
-                cargo.lowercase().contains("administrativo") || cargo.lowercase().contains("contador") ->
-                    "Para postularte a $cargo: Dedica 45 segundos a preguntas de clasificación documental y Excel rápido. Prioriza respuestas precisas."
-                cargo.lowercase().contains("atención") || cargo.lowercase().contains("vendedor") ->
-                    "Para postularte a $cargo: En pruebas situacionales de atención al cliente, tómate 30 segundos para evaluar el tono empático antes de responder."
-                else ->
-                    "Para postularte a $cargo: Asigna máximo de 60 a 90 segundos por pregunta situacional. Mantén la calma y administra tu tiempo."
-            }
-            mostrarTip("Controla tu tiempo para $cargo", tipAdaptado)
+        // Navegación a la pantalla dedicada de Tips de Preparación
+        val irATips = {
+            startActivity(Intent(this, TipsPreparacionActivity::class.java))
         }
 
-        // Tip 2: Identifica temas débiles
-        cardTipDebiles?.setOnClickListener {
-            mostrarTip(
-                "Identifica tus temas débiles",
-                "Revisa tu gráfico de avance semanal para detectar las áreas con menor porcentaje y dedica sesiones cortas de refuerzo antes de postularte."
-            )
-        }
-
-        // Tip 3 / Quiz: Entrena 10 min diarios adaptado al cargo
-        cardTipDiario?.setOnClickListener {
-            iniciarQuiz10Minutos()
-        }
+        cardTipTiempo?.setOnClickListener { irATips() }
+        cardTipDebiles?.setOnClickListener { irATips() }
+        cardTipDiario?.setOnClickListener { irATips() }
 
         btnComenzarAvance?.setOnClickListener {
             iniciarQuiz10Minutos()

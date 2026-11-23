@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".EmpresaRegistroActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerEmpresaRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Logo EMPLEATE"
+                android:scaleType="centerCrop"
+                android:scaleX="1.65"
+                android:scaleY="1.65"
+                android:src="@drawable/logo_empleate" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="EMPLEATE"
+            android:textColor="#1E3A8A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Menú"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            app:tint="#1E3A8A" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/headerEmpresaRegistro"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp"
+            android:gravity="center_horizontal">
+
+            <!-- Logo circular grande con la lupa del boceto -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="40dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Logo"
+                    android:scaleType="centerCrop"
+                    android:scaleX="1.65"
+                    android:scaleY="1.65"
+                    android:src="@drawable/logo_empleate" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REGISTRAR PERFIL DE EMPRESA"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp" />
+
+            <!-- NIT -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NIT DE LA EMPRESA:"
+                android:textColor="#1E3A8A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etNitEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:hint="Ej. 900.123.456-7"
+                android:inputType="number"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- CORREO ELECTRÓNICO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CORREO ELECTRÓNICO:"
+                android:textColor="#1E3A8A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etCorreoEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:hint="contacto@empresa.com"
+                android:inputType="textEmailAddress"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- CONTRASEÑA -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CONTRASEÑA:"
+                android:textColor="#1E3A8A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etPasswordRegEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- CONFIRMAR CONTRASEÑA -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CONFIRMAR CONTRASEÑA:"
+                android:textColor="#1E3A8A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etConfirmPasswordRegEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_input"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#1E293B"
+                android:textColorHint="#64748B"
+                android:textSize="14sp" />
+
+            <!-- Botón ENVIAR -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnviarRegistroEmpresa"
+                android:layout_width="180dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                android:text="ENVIAR"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="#1E3A8A"
+                app:cornerRadius="26dp"
+                app:elevation="3dp" />
+
+            <!-- Checkbox Términos -->
+            <CheckBox
+                android:id="@+id/cbTerminosEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACEPTO TERMINOS Y CONDICIONES"
+                android:textColor="#1E293B"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

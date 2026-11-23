@@ -21,25 +21,11 @@
         android:textSize="32sp"
         android:textStyle="bold"
         android:letterSpacing="0.05"
-        app:layout_constraintBottom_toTopOf="@+id/tvSubtitulo"
+        app:layout_constraintBottom_toTopOf="@+id/cardLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/tvSubtitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Portal del Usuario"
-        android:textColor="#475569"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/cardLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
     <!-- Logo con sombra suave (sin borde duro) -->
     <androidx.cardview.widget.CardView
@@ -54,7 +40,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnIngresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitulo">
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo">
 
         <ImageView
             android:layout_width="match_parent"

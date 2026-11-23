@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="24dp"
+    tools:context=".EmpresaLoginActivity">
+
+    <!-- Encabezado superior (Logo sin fondo, EMPLEATE y Menú) -->
+    <LinearLayout
+        android:id="@+id/headerEmpresaLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Logo"
+                android:scaleType="centerCrop"
+                android:scaleX="1.65"
+                android:scaleY="1.65"
+                android:src="@drawable/logo_empleate" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="EMPLEATE EMPRESA"
+            android:textColor="#1E3A8A"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/btnMenuEmpresaLogin"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Menú"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            app:tint="#1E3A8A"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <!-- Contenedor del Formulario -->
+    <LinearLayout
+        android:id="@+id/formContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/registerLinkContainer"
+        app:layout_constraintTop_toBottomOf="@+id/headerEmpresaLogin"
+        app:layout_constraintVertical_bias="0.4">
+
+        <!-- Campo Correo / ID Empresa -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo o ID de Empresa:"
+            android:textColor="#334155"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etIdEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_input"
+            android:hint="empresa@empleate.app"
+            android:inputType="textEmailAddress"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#1E293B"
+            android:textColorHint="#94A3B8"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Campo Contraseña -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña:"
+            android:textColor="#334155"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etPasswordEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_input"
+            android:hint="Escribe la contraseña de la empresa"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#1E293B"
+            android:textColorHint="#94A3B8"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Botón Iniciar Sesión Empresa -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIniciarSesionEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="INICIAR SESIÓN EMPRESA"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#1E3A8A"
+            app:cornerRadius="16dp"
+            app:elevation="4dp" />
+
+    </LinearLayout>
+
+    <!-- Enlace a Registro Empresa -->
+    <LinearLayout
+        android:id="@+id/registerLinkContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/formContainer"
+        app:layout_constraintBottom_toTopOf="@+id/socialContainer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿No tienes cuenta? "
+            android:textColor="#64748B" />
+
+        <TextView
+            android:id="@+id/tvRegistrarPerfilEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registra tu empresa aquí"
+            android:textColor="#2563EB"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Opciones de Redes Sociales -->
+    <LinearLayout
+        android:id="@+id/socialContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="O CONTINUAR CON:"
+            android:textColor="#64748B"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <!-- Botón Google -->
+            <ImageButton
+                android:id="@+id/btnGoogleEmpresa"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_social_btn"
+                android:padding="13dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_google"
+                android:contentDescription="Continuar con Google" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

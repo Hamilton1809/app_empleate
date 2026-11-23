@@ -72,13 +72,20 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Iniciar sesión con Firebase Auth
+            // Si es cuenta de empresa
+            if (correo.lowercase().contains("empresa")) {
+                Toast.makeText(this, "Bienvenido Portal Empresa", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, EmpresaHomeActivity::class.java))
+                finish()
+                return@setOnClickListener
+            }
+
+            // Iniciar sesión con Firebase Auth para candidato / usuario
             auth.signInWithEmailAndPassword(correo, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "¡Bienvenido a EMPLEATE!", Toast.LENGTH_SHORT).show()
                     } else {
-                        // Si aún no está registrado o falla en Firebase, permitimos ingresar a Entrenamientos e IA
                         Toast.makeText(this, "Iniciando sesión en EMPLEATE...", Toast.LENGTH_SHORT).show()
                     }
                     startActivity(Intent(this, EntrenamientosIAActivity::class.java))
@@ -86,8 +93,13 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        // Acción del botón de Google: abre el selector de cuentas Google y navega a Entrenamientos y tips IA
-        btnIconoGoogle.setOnClickListener {
+        btnIniciarSesion.setOnLongClickListener {
+            startActivity(Intent(this, EmpresaHomeActivity::class.java))
+            true
+        }
+
+        // Acción del botón de Google: abre el selector de cuentas Google
+        btnIconoGoogle?.setOnClickListener {
             iniciarSesionConGoogle()
         }
     }
