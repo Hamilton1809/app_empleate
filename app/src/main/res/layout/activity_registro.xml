@@ -22,16 +22,6 @@
             android:padding="24dp"
             android:gravity="center_horizontal">
 
-            <!-- Menú hamburguesa (esquina superior derecha) -->
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="8dp"
-                android:contentDescription="Menú"
-                android:src="@android:drawable/ic_menu_sort_by_size"
-                app:tint="#1E3A8A" />
-
             <!-- Ícono / Logo circular sin cuadrícula de fondo -->
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
