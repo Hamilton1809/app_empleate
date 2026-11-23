@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".PostularOfertasActivity">
+
+  <!-- Encabezado con Logo circular y Menú -->
+  <LinearLayout
+      android:id="@+id/headerOfertas"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:gravity="center_vertical"
+      android:paddingHorizontal="20dp"
+      android:paddingTop="16dp"
+      android:paddingBottom="8dp"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="3dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+      <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scaleType="centerCrop"
+          android:scaleX="1.65"
+          android:scaleY="1.65"
+          android:src="@drawable/logo_empleate"
+          android:contentDescription="Logo EMPLEATE" />
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/btnMenuOfertas"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@android:drawable/ic_menu_sort_by_size"
+        app:tint="#0F172A"
+        android:contentDescription="Menú" />
+  </LinearLayout>
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintTop_toBottomOf="@+id/headerOfertas"
+      app:layout_constraintBottom_toBottomOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="24dp">
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Postular Ofertas"
+          android:textColor="#0F172A"
+          android:textSize="26sp"
+          android:textStyle="bold"
+          android:textAlignment="center"
+          android:layout_marginBottom="6dp" />
+
+      <View
+          android:layout_width="200dp"
+          android:layout_height="2dp"
+          android:layout_gravity="center_horizontal"
+          android:background="#94A3B8"
+          android:layout_marginBottom="20dp" />
+
+      <!-- Mensaje cuando una búsqueda no tiene coincidencias -->
+      <LinearLayout
+          android:id="@+id/layoutSinResultados"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:padding="20dp"
+          android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No se encontraron ofertas con ese filtro."
+            android:textColor="#1E293B"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerTodasOfertas"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="Ver todas las ofertas"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#1E3A8A"
+            app:cornerRadius="22dp" />
+      </LinearLayout>
+
+      <!-- OFERTA 1: AUXILIAR ADMINISTRATIVO -->
+      <com.google.android.material.card.MaterialCardView
+          android:id="@+id/cardOferta1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          app:cardCornerRadius="18dp"
+          app:cardElevation="3dp"
+          app:cardBackgroundColor="#E6F0FF"
+          app:strokeColor="#BFDBFE"
+          app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:gravity="center_vertical"
+              android:layout_marginBottom="6dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                app:tint="#1E3A8A"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Cargo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AUXILIAR ADMINISTRATIVO"
+                android:textColor="#0F172A"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="32dp"
+              android:text="Empresa: Soluciones S.A."
+              android:textColor="#1E293B"
+              android:textSize="13sp"
+              android:textStyle="bold" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="32dp"
+              android:layout_marginBottom="14dp"
+              android:text="Ubicación: Popayán, Cauca"
+              android:textColor="#1E293B"
+              android:textSize="13sp" />
+
+          <com.google.android.material.button.MaterialButton
+              android:id="@+id/btnPostular1"
+              android:layout_width="180dp"
+              android:layout_height="44dp"
+              android:layout_gravity="center_horizontal"
+              android:text="Postularme"
+              android:textAllCaps="false"
+              android:textColor="#FFFFFF"
+              android:textSize="14sp"
+              android:textStyle="bold"
+              app:backgroundTint="#2196F3"
+              app:cornerRadius="22dp" />
+        </LinearLayout>
+      </com.google.android.material.card.MaterialCardView>
+
+      <!-- OFERTA 2: DESARROLLADOR JUNIOR -->
+      <com.google.android.material.card.MaterialCardView
+          android:id="@+id/cardOferta2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          app:cardCornerRadius="18dp"
+          app:cardElevation="3dp"
+          app:cardBackgroundColor="#E6F0FF"
+          app:strokeColor="#BFDBFE"
+          app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:gravity="center_vertical"
+              android:layout_marginBottom="6dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                app:tint="#1E3A8A"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Cargo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DESARROLLADOR JUNIOR"
+                android:textColor="#0F172A"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="32dp"
+              android:text="Empresa: TecnoSoft"
+              android:textColor="#1E293B"
+              android:textSize="13sp"
+              android:textStyle="bold" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="32dp"
+              android:layout_marginBottom="14dp"
+              android:text="Ubicación: Cali, Valle"
+              android:textColor="#1E293B"
+              android:textSize="13sp" />
+
+          <com.google.android.material.button.MaterialButton
+              android:id="@+id/btnPostular2"
+              android:layout_width="180dp"
+              android:layout_height="44dp"
+              android:layout_gravity="center_horizontal"
+              android:text="Postularme"
+              android:textAllCaps="false"
+              android:textColor="#FFFFFF"
+              android:textSize="14sp"
+              android:textStyle="bold"
+              app:backgroundTint="#2196F3"
+              app:cornerRadius="22dp" />
+        </LinearLayout>
+      </com.google.android.material.card.MaterialCardView>
+
+      <!-- OFERTA 3: ATENCIÓN AL CLIENTE -->
+      <com.google.android.material.card.MaterialCardView
+          android:id="@+id/cardOferta3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          app:cardCornerRadius="18dp"
+          app:cardElevation="3dp"
+          app:cardBackgroundColor="#E6F0FF"
+          app:strokeColor="#BFDBFE"
+          app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:gravity="center_vertical"
+              android:layout_marginBottom="6dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                app:tint="#1E3A8A"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Cargo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ATENCIÓN AL CLIENTE"
+                android:textColor="#0F172A"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="32dp"
+              android:text="Empresa: GlobalService"
+              android:textColor="#1E293B"
+              android:textSize="13sp"
+              android:textStyle="bold" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="32dp"
+              android:layout_marginBottom="14dp"
+              android:text="Ubicación: Bogotá"
+              android:textColor="#1E293B"
+              android:textSize="13sp" />
+
+          <com.google.android.material.button.MaterialButton
+              android:id="@+id/btnPostular3"
+              android:layout_width="180dp"
+              android:layout_height="44dp"
+              android:layout_gravity="center_horizontal"
+              android:text="Postularme"
+              android:textAllCaps="false"
+              android:textColor="#FFFFFF"
+              android:textSize="14sp"
+              android:textStyle="bold"
+              app:backgroundTint="#2196F3"
+              app:cornerRadius="22dp" />
+        </LinearLayout>
+      </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+  </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,9 +29,12 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/btnMenuPaso2"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:contentDescription="Menú"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@android:drawable/ic_menu_sort_by_size"
             app:tint="#1E3A8A" />
     </LinearLayout>
