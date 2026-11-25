@@ -9,7 +9,7 @@
     android:background="@drawable/bg_gradient"
     tools:context=".AdminGestionUsuarioActivity">
 
-    <!-- Header -->
+    <!-- Header con foto/correo de Admin y Menú -->
     <LinearLayout
         android:id="@+id/headerGestionUsuario"
         android:layout_width="match_parent"
@@ -26,22 +26,41 @@
             android:layout_height="40dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="2dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginEnd="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="Logo"
-                android:scaleType="centerCrop"
-                android:scaleX="1.65"
-                android:scaleY="1.65"
-                android:src="@drawable/logo_empleate" />
+                android:contentDescription="Admin"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_google" />
         </androidx.cardview.widget.CardView>
 
-        <View
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Panel Administrativo"
+                android:textColor="#1E3A8A"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAdminEmailHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="admin@empleate.app"
+                android:textColor="#2563EB"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/btnMenuGestionUsuario"
@@ -65,95 +84,124 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="28dp"
-            android:paddingTop="20dp"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="12dp"
             android:paddingBottom="32dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GESTIÓN DE USUARIO"
+                android:text="GESTIÓN DE USUARIOS Y REGISTROS"
                 android:textColor="#1E3A8A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginBottom="32dp" />
+                android:layout_marginBottom="16dp" />
 
-            <!-- Campo Nombre -->
+            <!-- Añadir Usuario Manualmente -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#EFF6FF"
+                app:strokeColor="#DBEAFE"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Registrar Usuario / Candidato"
+                        android:textColor="#1E3A8A"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <EditText
+                        android:id="@+id/etNombreGestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_input"
+                        android:hint="Nombre de usuario"
+                        android:inputType="textPersonName"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:textColor="#1E293B"
+                        android:textColorHint="#64748B"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/etCorreoGestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_input"
+                        android:hint="Correo electrónico (ej: usuario@gmail.com)"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:textColor="#1E293B"
+                        android:textColorHint="#64748B"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAñadirUsuario"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:text="AÑADIR"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="#1E3A8A"
+                            app:cornerRadius="10dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEliminarUsuario"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:text="ELIMINAR"
+                            android:textColor="#DC2626"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:strokeColor="#DC2626"
+                            app:strokeWidth="1.5dp"
+                            app:cornerRadius="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- SECCIÓN: REGISTRO CENTRALIZADO DE ACTIVIDADES -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre"
+                android:text="REGISTRO CENTRALIZADO EN TIEMPO REAL"
                 android:textColor="#1E3A8A"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="12dp" />
 
-            <EditText
-                android:id="@+id/etNombreGestion"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/bg_input"
-                android:hint="Nombre"
-                android:inputType="textPersonName"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textColor="#1E293B"
-                android:textColorHint="#64748B"
-                android:textSize="14sp" />
-
-            <!-- Campo Correo -->
-            <TextView
+            <LinearLayout
+                android:id="@+id/containerLogsAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Correo electrónico"
-                android:textColor="#1E3A8A"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="6dp" />
-
-            <EditText
-                android:id="@+id/etCorreoGestion"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginBottom="36dp"
-                android:background="@drawable/bg_input"
-                android:hint="Correo electrónico"
-                android:inputType="textEmailAddress"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textColor="#1E293B"
-                android:textColorHint="#64748B"
-                android:textSize="14sp" />
-
-            <!-- Botón Añadir -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAñadirUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginBottom="16dp"
-                android:text="AÑADIR"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:backgroundTint="#1E3A8A"
-                app:cornerRadius="6dp"
-                app:elevation="3dp" />
-
-            <!-- Botón Eliminar -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEliminarUsuario"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="Eliminar"
-                android:textColor="#1E3A8A"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:strokeColor="#1E3A8A"
-                app:strokeWidth="1.5dp"
-                app:cornerRadius="6dp" />
+                android:orientation="vertical" />
 
         </LinearLayout>
     </ScrollView>

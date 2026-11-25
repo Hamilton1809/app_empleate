@@ -25,11 +25,11 @@ class RolesActivity : AppCompatActivity() {
         }
 
         val irAEmpresa = {
-            startActivity(Intent(this, EmpresaSplashActivity::class.java))
+            startActivity(Intent(this, EmpresaLoginActivity::class.java))
         }
 
         val irAAdmin = {
-            startActivity(Intent(this, AdminSplashActivity::class.java))
+            startActivity(Intent(this, AdminLoginActivity::class.java))
         }
 
         btnRolUsuario.setOnClickListener { irAUsuario() }

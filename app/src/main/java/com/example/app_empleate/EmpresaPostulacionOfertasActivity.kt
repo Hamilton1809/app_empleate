@@ -3,6 +3,7 @@ package com.example.app_empleate
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +15,17 @@ class EmpresaPostulacionOfertasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empresa_postulacion_ofertas)
 
+        val btnMenuEmpresaPostulacion = findViewById<ImageView?>(R.id.btnMenuEmpresaPostulacion)
         val spCategorias = findViewById<Spinner>(R.id.spCategorias)
         val btnPublicarOferta = findViewById<MaterialButton>(R.id.btnPublicarOferta)
 
         val categorias = arrayOf("Administración", "Desarrollo de Software", "Atención al Cliente", "Ventas", "Marketing")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categorias)
         spCategorias.adapter = adapter
+
+        btnMenuEmpresaPostulacion?.setOnClickListener {
+            MenuNavegacionHelper.mostrarMenu(this)
+        }
 
         btnPublicarOferta.setOnClickListener {
             Toast.makeText(this, "Oferta de Empleo Publicada Exitosamente", Toast.LENGTH_SHORT).show()

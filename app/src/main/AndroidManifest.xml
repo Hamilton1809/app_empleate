@@ -88,6 +88,26 @@
                 android:resource="@xml/filepaths" />
         </provider>
         <activity
+            android:name=".EmpresaOpcionesActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EmpresaFinanzasActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EmpresaRecursosHumanosActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EmpresaControlStockActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".EmpresaHomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

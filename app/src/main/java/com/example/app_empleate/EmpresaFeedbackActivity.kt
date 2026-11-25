@@ -16,6 +16,10 @@ class EmpresaFeedbackActivity : AppCompatActivity() {
             finish()
         }
 
+        findViewById<ImageView?>(R.id.btnMenuEmpresaFeedback)?.setOnClickListener {
+            MenuNavegacionHelper.mostrarMenu(this)
+        }
+
         findViewById<MaterialButton>(R.id.btnSeleccionarArchivo).setOnClickListener {
             Toast.makeText(this, "Seleccionando archivo de imagen...", Toast.LENGTH_SHORT).show()
         }

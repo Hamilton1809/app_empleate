@@ -53,11 +53,14 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:id="@+id/btnMenuEmpresaPostulacion"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:contentDescription="Menú"
             android:src="@android:drawable/ic_menu_sort_by_size"
-            app:tint="#1E3A8A" />
+            app:tint="#1E3A8A"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 
     <ScrollView

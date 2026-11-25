@@ -16,8 +16,12 @@ class EmpresaCambiarPasswordActivity : AppCompatActivity() {
             finish()
         }
 
+        findViewById<ImageView?>(R.id.btnMenuEmpresaPassword)?.setOnClickListener {
+            MenuNavegacionHelper.mostrarMenu(this)
+        }
+
         findViewById<MaterialButton>(R.id.btnCambiarPasswordEmpresa).setOnClickListener {
-            Toast.makeText(this, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Contraseña de empresa actualizada correctamente", Toast.LENGTH_SHORT).show()
             finish()
         }
     }
