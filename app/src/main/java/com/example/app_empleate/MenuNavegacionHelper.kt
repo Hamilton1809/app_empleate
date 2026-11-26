@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -32,51 +33,83 @@ object MenuNavegacionHelper {
             }
         }
 
+        fun configurarFila(
+            container: LinearLayout?,
+            texto: String,
+            iconoRes: Int,
+            visible: Boolean = true,
+            onClick: () -> Unit
+        ) {
+            if (container == null) return
+            if (!visible) {
+                container.visibility = View.GONE
+                return
+            }
+            container.visibility = View.VISIBLE
+            val tv = container.getChildAt(1) as? TextView
+            val img = container.getChildAt(0) as? ImageView
+            tv?.text = texto
+            img?.setImageResource(iconoRes)
+            container.setOnClickListener { onClick() }
+        }
+
         val esEmpresa = activity.javaClass.name.contains("Empresa")
         val esAdmin = activity.javaClass.name.contains("Admin")
 
         val tvMenuTitulo = view.findViewById<TextView?>(R.id.tvMenuTitulo)
 
+        val btn1 = view.findViewById<LinearLayout>(R.id.btnMenuInicio)
+        val btn2 = view.findViewById<LinearLayout>(R.id.btnMenuBuscar)
+        val btn3 = view.findViewById<LinearLayout>(R.id.btnMenuOfertas)
+        val btn4 = view.findViewById<LinearLayout>(R.id.btnMenuCrearHV)
+        val btn5 = view.findViewById<LinearLayout>(R.id.btnMenuRegistrarHV)
+        val btn6 = view.findViewById<LinearLayout>(R.id.btnMenuImprimirHV)
+        val btn7 = view.findViewById<LinearLayout>(R.id.btnMenuIA)
+        val btn8 = view.findViewById<LinearLayout>(R.id.btnMenuLogin)
+        val btn9 = view.findViewById<LinearLayout>(R.id.btnMenuCerrarSesion)
+
         if (esEmpresa) {
             tvMenuTitulo?.text = "MENÚ EMPRESA"
 
-            view.findViewById<View>(R.id.btnMenuInicio)?.setOnClickListener { navegar(EmpresaHomeActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuBuscar)?.setOnClickListener { navegar(EmpresaPostulacionOfertasActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuOfertas)?.setOnClickListener { navegar(EmpresaPostulacionOfertasActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuCrearHV)?.setOnClickListener { navegar(EmpresaRegistroActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuRegistrarHV)?.visibility = View.GONE
-            view.findViewById<View>(R.id.btnMenuImprimirHV)?.setOnClickListener { navegar(EmpresaFeedbackActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuIA)?.setOnClickListener { navegar(EmpresaCambiarPasswordActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuLogin)?.setOnClickListener { navegar(EmpresaLoginActivity::class.java) }
+            configurarFila(btn1, "Postulaciones / Inicio", android.R.drawable.ic_menu_today) { navegar(EmpresaHomeActivity::class.java) }
+            configurarFila(btn2, "Postulación de Ofertas", android.R.drawable.ic_menu_edit) { navegar(EmpresaPostulacionOfertasActivity::class.java) }
+            configurarFila(btn3, "Registrar Perfil de Empresa", android.R.drawable.ic_menu_save) { navegar(EmpresaRegistroActivity::class.java) }
+            configurarFila(btn4, "Gestión de Finanzas", android.R.drawable.ic_menu_compass) { navegar(EmpresaFinanzasActivity::class.java) }
+            configurarFila(btn5, "Recursos Humanos", android.R.drawable.ic_menu_myplaces) { navegar(EmpresaRecursosHumanosActivity::class.java) }
+            configurarFila(btn6, "Control de Stock", android.R.drawable.ic_menu_agenda) { navegar(EmpresaControlStockActivity::class.java) }
+            configurarFila(btn7, "Cambiar Contraseña", android.R.drawable.ic_lock_lock) { navegar(EmpresaCambiarPasswordActivity::class.java) }
+            configurarFila(btn8, "Feedback y Comentarios", android.R.drawable.ic_menu_send) { navegar(EmpresaFeedbackActivity::class.java) }
+
         } else if (esAdmin) {
             tvMenuTitulo?.text = "MENÚ ADMINISTRATIVO"
 
-            view.findViewById<View>(R.id.btnMenuInicio)?.setOnClickListener { navegar(AdminGestionEmpresaActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuBuscar)?.setOnClickListener { navegar(AdminGestionUsuarioActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuOfertas)?.setOnClickListener { navegar(AdminCrearCategoriasActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuCrearHV)?.setOnClickListener { navegar(AdminEstrategiaActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuRegistrarHV)?.visibility = View.GONE
-            view.findViewById<View>(R.id.btnMenuImprimirHV)?.setOnClickListener { navegar(AdminCambiarPasswordActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuIA)?.visibility = View.GONE
-            view.findViewById<View>(R.id.btnMenuLogin)?.setOnClickListener { navegar(RolesActivity::class.java) }
+            configurarFila(btn1, "Gestión de Empresa", android.R.drawable.ic_menu_manage) { navegar(AdminGestionEmpresaActivity::class.java) }
+            configurarFila(btn2, "Gestión de Usuario", android.R.drawable.ic_menu_myplaces) { navegar(AdminGestionUsuarioActivity::class.java) }
+            configurarFila(btn3, "Crear Categorías", android.R.drawable.ic_menu_add) { navegar(AdminCrearCategoriasActivity::class.java) }
+            configurarFila(btn4, "Estrategia de Preparación", android.R.drawable.ic_menu_agenda) { navegar(AdminEstrategiaActivity::class.java) }
+            configurarFila(btn5, "Cambiar Contraseña", android.R.drawable.ic_lock_lock) { navegar(AdminCambiarPasswordActivity::class.java) }
+            configurarFila(btn6, "", 0, false) {}
+            configurarFila(btn7, "", 0, false) {}
+            configurarFila(btn8, "", 0, false) {}
+
         } else {
             // Usuario / Candidato por defecto
-            if (activity is RegistroActivity || activity is RegistrarHojaVidaActivity) {
-                view.findViewById<View>(R.id.btnMenuRegistrarHV)?.visibility = View.GONE
-            }
+            tvMenuTitulo?.text = "MENÚ DE NAVEGACIÓN"
 
-            view.findViewById<View>(R.id.btnMenuInicio)?.setOnClickListener { navegar(MainActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuBuscar)?.setOnClickListener { navegar(BuscarEmpleoActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuOfertas)?.setOnClickListener { navegar(PostularOfertasActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuCrearHV)?.setOnClickListener { navegar(CrearHojaVidaActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuRegistrarHV)?.setOnClickListener { navegar(RegistrarHojaVidaActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuImprimirHV)?.setOnClickListener { navegar(ImprimirHojaVidaActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuIA)?.setOnClickListener { navegar(EntrenamientosIAActivity::class.java) }
-            view.findViewById<View>(R.id.btnMenuLogin)?.setOnClickListener { navegar(LoginActivity::class.java) }
+            val mostrarRegHv = activity !is RegistroActivity && activity !is RegistrarHojaVidaActivity
+
+            configurarFila(btn1, "Inicio", android.R.drawable.ic_menu_myplaces) { navegar(MainActivity::class.java) }
+            configurarFila(btn2, "Buscar empleo", android.R.drawable.ic_menu_search) { navegar(BuscarEmpleoActivity::class.java) }
+            configurarFila(btn3, "Postular Ofertas", android.R.drawable.ic_menu_agenda) { navegar(PostularOfertasActivity::class.java) }
+            configurarFila(btn4, "Crear / Editar Hoja de Vida", android.R.drawable.ic_menu_edit) { navegar(CrearHojaVidaActivity::class.java) }
+            configurarFila(btn5, "Registrar Hoja de Vida", android.R.drawable.ic_menu_save, mostrarRegHv) { navegar(RegistrarHojaVidaActivity::class.java) }
+            configurarFila(btn6, "Imprimir / Descargar Hoja de Vida", android.R.drawable.ic_menu_share) { navegar(ImprimirHojaVidaActivity::class.java) }
+            configurarFila(btn7, "Entrenamientos y tips IA", android.R.drawable.ic_menu_manage) { navegar(EntrenamientosIAActivity::class.java) }
+            configurarFila(btn8, "Iniciar Sesión / Registro", android.R.drawable.ic_lock_lock) { navegar(LoginActivity::class.java) }
         }
 
-        // Cerrar sesión
-        view.findViewById<View>(R.id.btnMenuCerrarSesion)?.setOnClickListener {
+        // Fila 9: Cerrar sesión
+        configurarFila(btn9, "Cerrar Sesión", android.R.drawable.ic_lock_power_off) {
             dialog.dismiss()
             FirebaseAuth.getInstance().signOut()
             Toast.makeText(activity, "Sesión cerrada correctamente", Toast.LENGTH_SHORT).show()

@@ -28,9 +28,14 @@ class TipsPreparacionActivity : AppCompatActivity() {
 
         val btnRegresarTips = findViewById<ImageView>(R.id.btnRegresarTips)
         val btnMenuTips = findViewById<ImageView>(R.id.btnMenuTips)
+        val tvUserEmailTipsHeader = findViewById<TextView?>(R.id.tvUserEmailTipsHeader)
         val tvCargoTipsHeader = findViewById<TextView>(R.id.tvCargoTipsHeader)
         val btnCambiarCargoTips = findViewById<MaterialButton>(R.id.btnCambiarCargoTips)
         val tvTipTiempoDetalle = findViewById<TextView>(R.id.tvTipTiempoDetalle)
+
+        val currentUser = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+        val emailStr = currentUser?.email ?: "usuario@gmail.com"
+        tvUserEmailTipsHeader?.text = emailStr
 
         val btnProbarReloj = findViewById<MaterialButton>(R.id.btnProbarReloj)
         val btnVerDiagnostico = findViewById<MaterialButton>(R.id.btnVerDiagnostico)
@@ -60,44 +65,10 @@ class TipsPreparacionActivity : AppCompatActivity() {
         btnMenuTips.setOnClickListener { MenuNavegacionHelper.mostrarMenu(this) }
 
         btnCambiarCargoTips.setOnClickListener {
-            val cargosPopulares = arrayOf(
-                "Auxiliar Administrativo",
-                "Desarrollador Junior",
-                "Atención al Cliente",
-                "Vendedor / Comercial",
-                "Contador / Finanzas",
-                "Diseñador Gráfico",
-                "Ingeniero de Sistemas",
-                "Escribir otro cargo..."
-            )
-
-            AlertDialog.Builder(this)
-                .setTitle("¿En qué cargo te vas a postular?")
-                .setItems(cargosPopulares) { _, which ->
-                    if (which == cargosPopulares.size - 1) {
-                        val input = EditText(this)
-                        input.hint = "Ej: Analista de datos"
-                        AlertDialog.Builder(this)
-                            .setTitle("Ingresa tu cargo objetivo")
-                            .setView(input)
-                            .setPositiveButton("Guardar") { _, _ ->
-                                val nuevoCargo = input.text.toString().trim()
-                                if (nuevoCargo.isNotEmpty()) {
-                                    PerfilUsuarioRepository.setCargoPostulacion(this, nuevoCargo)
-                                    cargarTipsAdaptados()
-                                    Toast.makeText(this, "Cargo guardado", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            .setNegativeButton("Cancelar", null)
-                            .show()
-                    } else {
-                        val nuevoCargo = cargosPopulares[which]
-                        PerfilUsuarioRepository.setCargoPostulacion(this, nuevoCargo)
-                        cargarTipsAdaptados()
-                        Toast.makeText(this, "Cargo actualizado: $nuevoCargo", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .show()
+            SelectorCargoDialog.mostrarSelector(this) { nuevoCargo ->
+                cargarTipsAdaptados()
+                Toast.makeText(this, "Cargo actualizado: $nuevoCargo", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnProbarReloj.setOnClickListener {
