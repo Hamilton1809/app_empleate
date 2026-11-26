@@ -6,8 +6,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
@@ -16,7 +19,14 @@ class EntrenamientosIAActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_entrenamientos_ia)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         DatosHojaVidaRepository.cargarDePrefs(this)
 
@@ -27,59 +37,22 @@ class EntrenamientosIAActivity : AppCompatActivity() {
 
         // Mostrar el correo del usuario autenticado en el encabezado
         val currentUser = FirebaseAuth.getInstance().currentUser
-        val userEmail = currentUser?.email
-        if (!userEmail.isNullOrEmpty()) {
-            tvUserEmailHeader?.text = userEmail
-        }
+        val userEmail = currentUser?.email ?: "usuario@gmail.com"
+        tvUserEmailHeader?.text = userEmail
 
         // Actualizar el cargo objetivo guardado
         fun actualizarCargoUi() {
             val cargo = PerfilUsuarioRepository.getCargoPostulacion(this)
-            tvCargoActualIA?.text = "Cargo objetivo actual: $cargo"
+            tvCargoActualIA?.text = cargo
         }
         actualizarCargoUi()
 
-        // Cambiar en qué se va a postular
+        // Cambiar en qué se va a postular con diseño moderno
         btnCambiarCargoIA?.setOnClickListener {
-            val cargosPopulares = arrayOf(
-                "Auxiliar Administrativo",
-                "Desarrollador Junior",
-                "Atención al Cliente",
-                "Vendedor / Comercial",
-                "Contador / Finanzas",
-                "Diseñador Gráfico",
-                "Ingeniero de Sistemas",
-                "Escribir otro cargo..."
-            )
-
-            AlertDialog.Builder(this)
-                .setTitle("¿En qué cargo te vas a postular?")
-                .setItems(cargosPopulares) { _, which ->
-                    if (which == cargosPopulares.size - 1) {
-                        // Escribir otro cargo personalizado
-                        val input = EditText(this)
-                        input.hint = "Ej: Analista de datos"
-                        AlertDialog.Builder(this)
-                            .setTitle("Ingresa tu cargo objetivo")
-                            .setView(input)
-                            .setPositiveButton("Guardar") { _, _ ->
-                                val nuevoCargo = input.text.toString().trim()
-                                if (nuevoCargo.isNotEmpty()) {
-                                    PerfilUsuarioRepository.setCargoPostulacion(this, nuevoCargo)
-                                    actualizarCargoUi()
-                                    Toast.makeText(this, "Cargo objetivo guardado en tu cuenta", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            .setNegativeButton("Cancelar", null)
-                            .show()
-                    } else {
-                        val nuevoCargo = cargosPopulares[which]
-                        PerfilUsuarioRepository.setCargoPostulacion(this, nuevoCargo)
-                        actualizarCargoUi()
-                        Toast.makeText(this, "Cargo objetivo actualizado: $nuevoCargo", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .show()
+            SelectorCargoDialog.mostrarSelector(this) { nuevoCargo ->
+                actualizarCargoUi()
+                Toast.makeText(this, "Cargo objetivo actualizado: $nuevoCargo", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val btnIniciarEntrenamientoIA = findViewById<MaterialButton?>(R.id.btnIniciarEntrenamientoIA)
@@ -178,14 +151,6 @@ class EntrenamientosIAActivity : AppCompatActivity() {
                 Toast.makeText(this, "Excelente respuesta registrada para pregunta ${which + 1}", Toast.LENGTH_SHORT).show()
             }
             .setPositiveButton("Completar sesión", null)
-            .show()
-    }
-
-    private fun mostrarTip(titulo: String, descripcion: String) {
-        AlertDialog.Builder(this)
-            .setTitle(titulo)
-            .setMessage(descripcion)
-            .setPositiveButton("Entendido", null)
             .show()
     }
 }
